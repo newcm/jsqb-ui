@@ -1,6 +1,6 @@
 # ui
 
-> ui demo
+> template
 
 ## Build Setup
 
