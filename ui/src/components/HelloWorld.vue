@@ -16,9 +16,18 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-    <hell @getvalue='getvalue'  :keyshow='show1' @close='close' ref='hell'>
-      <div> hhahaha </div>
+    <hell @getvalue='getvalue'  :keyshow.sync='show1'   :success.sync='success' :fail.sync='fail'ref='hell'>
+      
     </hell>
+    <Dialogui title='标题' type='comfrim' v-show='alert1' @dialog='dialogEvent'>
+      <h1>内容</h1> 
+    </Dialogui>
+    <Dialogui   v-show='alert' @dialog='dialogEvent1' cancelBtn='确定'>
+      <h2> 内容</h2>
+    </Dialogui>
+    <Tip title='我是提示信息' :tipshow.sync='tip' :duration='3000' >
+      
+    </Tip>
   </div>
 </template>
 
@@ -26,28 +35,45 @@
 import Vue from 'vue'
 import keyborad from './keyborad/keyboard.vue'
 Vue.component(keyborad.name,keyborad)
+import Dialogui from './Dialog/dialog.vue'
+import Tip from './Tips/tips.vue'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      show1:false
+      show1:false,
+      alert:false,
+      alert1:false,
+      tip:false,
+      success:false,
+      fail:false
     }
   },
   methods:{
     getvalue(mes){
       console.log(mes);
-      this.$refs.hell.close();
+      // this.$refs.hell.close();
+      setTimeout(()=>{this.fail=true,
+      setTimeout(()=>{this.show1=false},1000)
+      },2000)
     },
    getHell(){
-     this.show1 = true;
+     this.tip = true;
    },
    close(){
      this.show1 = false;
+   },
+   dialogEvent(type){
+     console.log(type)
+   },
+   dialogEvent1(type){
+     console.log(type)
    }
   },
   components:{
-    
+    Dialogui,
+    Tip
   }
 }
 </script>
