@@ -10,7 +10,7 @@ export default {
   name: 'hell',
   data () {
     return {
-       
+       tipshow:true
     }
   },
   props:{
@@ -18,23 +18,18 @@ export default {
          type:String,
          default:'提示信息'
      },
-     tipshow:{
-         type:Boolean,
-         default:false,
-         required:true
-     },
      duration:{
          type:Number,
          default:2000
      }
   },
   watch:{
-      tipshow(val){
-            if (this._timeout) clearTimeout(this._timeout)
-            if (val && !!this.duration) {
-                this._timeout = setTimeout(()=> this.$emit('update:tipshow',!this.tipshow), this.duration)
-            }
-      }
+    //   tipshow(val){
+    //         if (this._timeout) clearTimeout(this._timeout)
+    //         if (val && !!this.duration) {
+    //             this._timeout = setTimeout(()=> this.$emit('update:tipshow',!this.tipshow), this.duration)
+    //         }
+    //   }
   },
   methods:{
       

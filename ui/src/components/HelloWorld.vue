@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <h2 @click='get()'>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -25,9 +25,10 @@
     <Dialogui   v-show='alert' @dialog='dialogEvent1' cancelBtn='确定'>
       <h2> 内容</h2>
     </Dialogui>
-    <Tip title='我是提示信息' :tipshow.sync='tip' :duration='3000' >
+    <!-- <Tip title='我是提示信息' :tipshow.sync='tip' :duration='3000' >
       
-    </Tip>
+    </Tip> -->
+    <Selectui></Selectui>
   </div>
 </template>
 
@@ -36,7 +37,9 @@ import Vue from 'vue'
 import keyborad from './keyborad/keyboard.vue'
 Vue.component(keyborad.name,keyborad)
 import Dialogui from './Dialog/dialog.vue'
+import Selectui from './Select/Select.vue'
 import Tip from './Tips/tips.vue'
+import Toast from './Tips/toast.js'
 export default {
   name: 'HelloWorld',
   data () {
@@ -58,8 +61,14 @@ export default {
       setTimeout(()=>{this.show1=false},1000)
       },2000)
     },
+    get(){
+      // Toast({title:'13425',duration:5000})
+
+    },
    getHell(){
-     this.tip = true;
+    //  this.tip = true;
+    console.log(Toast('mingming'))
+    // Toast('mingming',1000)
    },
    close(){
      this.show1 = false;
@@ -73,7 +82,8 @@ export default {
   },
   components:{
     Dialogui,
-    Tip
+    Tip,
+    Selectui
   }
 }
 </script>
