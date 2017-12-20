@@ -27,6 +27,8 @@ export default {
     return {
        data:[1,2,3,4,5,6,5,4,3,3,4,4,4],
        site:164,
+       baseSite:164,
+       time:300
     }
   },
   props:{
@@ -47,7 +49,7 @@ export default {
       boxstyle() {
           return {
               transform:`translate3d(0,${this.site}px,0)`,
-            //   transition: `300ms`,
+              transition: `${this.time}ms`,
           }
       }
   },
@@ -62,16 +64,20 @@ export default {
   methods:{
       start(e){
           this.startY = event.touches[0].clientY;
+          this.time = 0;
         //   console.log(this.startY)
       },
       move(e){
-          this.site+= event.touches[0].clientY-this.startY ;
-        //   console.log(this.site)
+          let moveSite = event.touches[0].clientY-this.startY;
+          this.site=this.baseSite+moveSite;
+          console.log(this.site)
       },
       end(e){
           this.end = event.changedTouches[0].clientY;
-          this.startY = this.end
-          console.log(this.end)
+          this.time = 300;
+          this.baseSite = this.site;
+        //   this.startY = this.end
+        //   console.log(this.end)
       }
   }
 }
