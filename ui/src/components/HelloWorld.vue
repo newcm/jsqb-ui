@@ -16,7 +16,7 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-    <hell @getvalue='getvalue'  :keyshow.sync='show1'   :success.sync='success' :fail.sync='fail'ref='hell'>
+    <hell @getvalue='getvalue'  :keyshow.sync='show1'   :success.sync='success' :fail.sync='fail' ref='hell'>
       
     </hell>
     <Dialogui title='标题' type='comfrim' v-show='alert1' @dialog='dialogEvent'>
@@ -28,7 +28,8 @@
     <!-- <Tip title='我是提示信息' :tipshow.sync='tip' :duration='3000' >
       
     </Tip> -->
-    <Selectui></Selectui>
+    <Selectui :tipshow.sync="selectshow" @getValue='getValue' title='我的选择框' :value='value'></Selectui>
+    <Picker :tipshow.sync="picker" :value1='v1' :value2='v2' :value3='v3'></Picker>
   </div>
 </template>
 
@@ -38,6 +39,7 @@ import keyborad from './keyborad/keyboard.vue'
 Vue.component(keyborad.name,keyborad)
 import Dialogui from './Dialog/dialog.vue'
 import Selectui from './Select/Select.vue'
+import Picker from './Picker/picker.vue'
 import Tip from './Tips/tips.vue'
 import Toast from './Tips/toast.js'
 export default {
@@ -50,7 +52,13 @@ export default {
       alert1:false,
       tip:false,
       success:false,
-      fail:false
+      fail:false,
+      selectshow:false,
+      picker:true,
+      v1:[1,2,3,4,5,4,5,6],
+      v2:[1,2,3,2,3,2,32,4],
+      v3:[1,2,4,2,1,2,1,21],
+      value:[1,2,3,4,5,6,75,5,4,4,4,4,4,4,43,3,4,3,43,4,3,43,445,9]
     }
   },
   methods:{
@@ -66,9 +74,12 @@ export default {
 
     },
    getHell(){
-    //  this.tip = true;
-    console.log(Toast('mingming'))
+     this.selectshow = true;
+    // console.log(Toast('mingming'))
     // Toast('mingming',1000)
+   },
+   getValue(val){
+     console.log(val)
    },
    close(){
      this.show1 = false;
@@ -83,7 +94,8 @@ export default {
   components:{
     Dialogui,
     Tip,
-    Selectui
+    Selectui,
+    Picker
   }
 }
 </script>

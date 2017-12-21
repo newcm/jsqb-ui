@@ -12,8 +12,16 @@
               >
               <div class='select-mask-top'></div>
               <div class='select-mask-bottom'></div>
-              <div class='select-info' :style="boxstyle">
-                  <div v-for='item in value'>{{item}}</div>
+              <div class='info-box'>
+                <div class='select-info' :style="boxstyle">
+                    <div v-for='item in value1'>{{item}}</div>
+                </div>
+                <div class='select-info' :style="boxstyle">
+                    <div v-for='item in value2'>{{item}}</div>
+                </div>
+                <div class='select-info' :style="boxstyle">
+                    <div v-for='item in value3'>{{item}}</div>
+                </div>
               </div>
           </div>
       </div>
@@ -30,8 +38,11 @@ export default {
        endT:0,
        offset:2,
        moveD:0,
-       time:300
+       time:300,
     }
+  },
+  mounted(){
+
   },
   props:{
      title:{
@@ -46,7 +57,15 @@ export default {
          type:Boolean,
          default:true
      },
-     value:{
+     value1:{
+         type:Array,
+         default:[]
+     },
+     value2:{
+         type:Array,
+         default:[]
+     },
+     value3:{
          type:Array,
          default:[]
      }
@@ -71,6 +90,7 @@ export default {
       touchstart(e){
           e.stopPropagation();
           e.preventDefault();
+          console.log(e.target.parentNode)
           this.startY = event.touches[0].clientY;
           this.time = 0;
           this.startT = new Date().getTime();
@@ -164,6 +184,10 @@ export default {
         height:410px;
         position:relative;
         // background:#E5E5E5;
+        .info-box{
+            display:flex;
+            justify-content: space-between;
+        }
         .select-info{
             transform:translateY(164px);
             -webkit-transform:translateY(164px);
