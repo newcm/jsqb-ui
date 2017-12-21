@@ -29,7 +29,8 @@
       
     </Tip> -->
     <Selectui :tipshow.sync="selectshow" @getValue='getValue' title='我的选择框' :value='value'></Selectui>
-    <Picker :tipshow.sync="picker" :value1='v1' :value2='v2' :value3='v3'></Picker>
+    <Picker :tipshow.sync="picker" :value1='v1' :value2='v2' ></Picker>
+    <cityPicker></cityPicker>
   </div>
 </template>
 
@@ -40,6 +41,7 @@ Vue.component(keyborad.name,keyborad)
 import Dialogui from './Dialog/dialog.vue'
 import Selectui from './Select/Select.vue'
 import Picker from './Picker/picker.vue'
+import cityPicker from './Picker/cityPicker.vue'
 import Tip from './Tips/tips.vue'
 import Toast from './Tips/toast.js'
 export default {
@@ -54,10 +56,10 @@ export default {
       success:false,
       fail:false,
       selectshow:false,
-      picker:true,
+      picker:false,
       v1:[1,2,3,4,5,4,5,6],
       v2:[1,2,3,2,3,2,32,4],
-      v3:[1,2,4,2,1,2,1,21],
+      // v3:[1,2,4,2,1,2,1,21],
       value:[1,2,3,4,5,6,75,5,4,4,4,4,4,4,43,3,4,3,43,4,3,43,445,9]
     }
   },
@@ -95,7 +97,8 @@ export default {
     Dialogui,
     Tip,
     Selectui,
-    Picker
+    Picker,
+    cityPicker
   }
 }
 </script>
