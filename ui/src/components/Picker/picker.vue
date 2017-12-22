@@ -1,17 +1,18 @@
 <template>
-  <div class="picker-box" v-show='tipshow'>
-          <div class='picker-content' @touchstart='touchstart($event)'
-              @touchmove='touchmove($event)'
-              @touchend='touchend($event)'
-              >
-              <div class='picker-mask-top'></div>
-              <div class='picker-mask-bottom'></div>
-              <div class='info-box'>
+  <div class="picker-box">
+        <div class='picker-content' 
+            @touchstart='touchstart($event)'
+            @touchmove='touchmove($event)'
+            @touchend='touchend($event)'
+        >
+            <div class='picker-mask-top'></div>
+            <div class='picker-mask-bottom'></div>
+            <div class='info-box'>
                 <div class='picker-info' :style="boxstyle">
                     <div v-for='(item,index) in value1' :class="{chose:index==2-offset}">{{item}}</div>
                 </div>
-              </div>
-          </div>
+            </div>
+        </div>
   </div>
 </template>
 
@@ -20,36 +21,25 @@ export default {
   name: 'hell',
   data () {
     return {
-       site:82,
-       startT:0,
-       endT:0,
-       offset:2,
-       moveD:0,
-       time:300,
+        site:82,
+        startT:0,
+        endT:0,
+        offset:2,
+        moveD:0,
+        time:300,
         width:100
     }
   },
-  mounted(){
-
-  },
   props:{
-     title:{
-         type:String,
-         default:'提示信息'
-     },
-     duration:{
-         type:Number,
-         default:2000
-     },
-     tipshow:{
-         type:Boolean,
-         default:true
-     },
      value1:{
          type:Array,
          default:function(){
              return []
          }
+     },
+     step:{
+         type:Number,
+         default:2
      }
   },
   computed:{
@@ -64,26 +54,19 @@ export default {
   mounted(){
       
   },
-  watch:{
-      
-  },
   methods:{
       touchstart(e){
-          console.log(e.target.parentNode)
           e.stopPropagation();
           e.preventDefault();
           this.startY = event.touches[0].clientY;
           this.time = 0;
           this.startT = new Date().getTime();
-        //   console.log(this.startT)
       },
       touchmove(e){
           e.stopPropagation();
           e.preventDefault();
           let moveSite = event.touches[0].clientY-this.startY;
-          this.moveD = moveSite;
-        //   console.log(moveSite)
-          
+          this.moveD = moveSite;     
       },
       touchend(e){
           e.stopPropagation();
@@ -99,16 +82,12 @@ export default {
               this.moveD = 0;
               this.offset = step>0?this.offset+step>=2?2:this.offset+step
                 :this.offset+step<=2-len?3-len:this.offset+step;
-            //   this.offset = step
           }else{
             this.moveD = 0;
             let step = parseInt((this.end-this.startY)/25);
             this.offset = step>0?this.offset+step>=2?2:this.offset+step
             :this.offset+step<=2-len?3-len:this.offset+step;
-            // console.log(this.offset)
-            //  console.log(parseInt((this.end-this.startY)/25)) 
           }
-        //   console.log(this.end-this.startY)
           
       }
   }
@@ -118,6 +97,7 @@ export default {
 <style lang='less' scoped>
 .picker-box {
    position:relative;
+   text-align:center;
 //    left: 0;
 //    top:0;
 //    width:100%;
@@ -128,9 +108,8 @@ export default {
 //    }
 }
 .picker-content{
-    position: absolute;
-    bottom:0;
-    left: 0;
+    text-align:center;
+    position: relative;
     width:100%;
     background:#fff;
     overflow: hidden;

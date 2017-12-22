@@ -19,7 +19,7 @@ const createInstance = () => {
 };
 const Toast = (options)=>{
     createInstance();
-    options = typeof options === 'object' ? options : { title: options };
+    options = typeof options === 'object' ? options : { title: options,duration:1500};
     options.tipshow = true;
     Object.assign(instance,options);
     

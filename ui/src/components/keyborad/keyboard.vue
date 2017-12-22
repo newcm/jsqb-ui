@@ -1,7 +1,7 @@
 <template>
   <div class="keyboard-box" v-if='keyshow'>
       <div class='keyborad-panel'>
-          <div class='keyboard-header' @click='close()' >请输入交易密码 <img src="" alt=""></div>
+          <div class='keyboard-header' @click='close()' >请输入交易密码(点击关闭) <img src="" alt=""></div>
           <div v-show='!show'>
               <slot v-if='load'>
                   <div class="loadEffect">
@@ -116,14 +116,18 @@ export default {
    right: 0;
    top:0;
    bottom:0;
-   background:rgba(0,0,0,.5)
+   background:rgba(0,0,0,.5);
+   text-align:center;
+   div{
+       box-sizing: border-box;
+   }
 }
 .keyborad-panel{
     position: absolute;
     bottom:0;
     left: 0;
     width:100%;
-    height: 800px;
+    height: 700px;
     background:#fff;
     .keyboard-header{
         line-height:80px;

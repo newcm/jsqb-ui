@@ -67,6 +67,7 @@ export default {
         background:#fff;
         border-radius:10px;
         .dialog-header{
+            text-align:center;
             font-size:36px;
             line-height:80px;
         }
@@ -74,6 +75,7 @@ export default {
             padding:20px;
         }
         .dialog-footer{
+            text-align:center;
             display: flex;
             display:-webkit-flex;
             span{

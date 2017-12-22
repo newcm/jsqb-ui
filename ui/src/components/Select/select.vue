@@ -59,14 +59,6 @@ export default {
           }
       }
   },
-  watch:{
-    //   tipshow(val){
-    //         if (this._timeout) clearTimeout(this._timeout)
-    //         if (val && !!this.duration) {
-    //             this._timeout = setTimeout(()=> this.$emit('update:tipshow',!this.tipshow), this.duration)
-    //         }
-    //   }
-  },
   methods:{
       touchstart(e){
           e.stopPropagation();

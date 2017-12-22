@@ -1,21 +1,8 @@
 <template>
   <div class="hello">
+    <!-- <img src="../assets/logo.png">
     <h1>{{ msg }}</h1>
-    <h2 @click='get()'>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-     
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2 @click='getHell()'>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <h3 style='text-align:right;color:#666;'>——口袋理财**</h3> -->
     <hell @getvalue='getvalue'  :keyshow.sync='show1'   :success.sync='success' :fail.sync='fail' ref='hell'>
       
     </hell>
@@ -29,8 +16,8 @@
       
     </Tip> -->
     <Selectui :tipshow.sync="selectshow" @getValue='getValue' title='我的选择框' :value='value'></Selectui>
-    <Picker :tipshow.sync="picker" :value1='v1' :value2='v2' ></Picker>
-    <cityPicker></cityPicker>
+    <!-- <Picker :tipshow.sync="picker" :value1='v1' :value2='v2' ></Picker> -->
+    <cityPicker :tipshow.sync='citypicker' :val1='v1' :val2='v2'  title='多列picker' @comfrim='okpicker'></cityPicker>
   </div>
 </template>
 
@@ -48,7 +35,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome use KD-ui',
       show1:false,
       alert:false,
       alert1:false,
@@ -57,6 +44,7 @@ export default {
       fail:false,
       selectshow:false,
       picker:false,
+      citypicker:false,
       v1:[1,2,3,4,5,4,5,6],
       v2:[1,2,3,2,3,2,32,4],
       // v3:[1,2,4,2,1,2,1,21],
@@ -76,7 +64,7 @@ export default {
 
     },
    getHell(){
-     this.selectshow = true;
+     this.citypicker = true;
     // console.log(Toast('mingming'))
     // Toast('mingming',1000)
    },
@@ -91,6 +79,9 @@ export default {
    },
    dialogEvent1(type){
      console.log(type)
+   },
+   okpicker(val){
+     Toast({title:'13425',duration:5000})
    }
   },
   components:{
@@ -118,5 +109,15 @@ li {
 }
 a {
   color: #42b983;
+}
+.hello{
+  box-sizing: border-box;
+  padding:20px;
+  position: absolute;
+  top:50%;
+  left: 0;
+  width:100%;
+  transform: translate(0%,-50%);
+  -webkit-transform: translate(0%,-50%);
 }
 </style>
