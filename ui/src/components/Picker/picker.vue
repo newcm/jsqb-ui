@@ -9,7 +9,7 @@
             <div class='picker-mask-bottom'></div>
             <div class='info-box'>
                 <div class='picker-info' :style="boxstyle">
-                    <div v-for='(item,index) in value1' :class="{chose:index==2-offset}">{{item}}</div>
+                    <div v-for='(item,index) in value1' :class="{chose:index==2-offset}" class='on'>{{item}}</div>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ export default {
   computed:{
       boxstyle() {
           return {
-              transform:`translate3d(0,${this.site*this.offset+this.moveD}px,0)`,
+              transform:`translate3d(0,${this.site*this.offset/75+this.moveD/75}rem,0)`,
               transition: `${this.time}ms`,
               width:`${this.width}%`
           }
@@ -76,15 +76,15 @@ export default {
           this.end = event.changedTouches[0].clientY;
           this.time = 300;
           if(this.endT-this.startT>300){
-              let step = this.moveD/82>0?
-              Math.abs(this.moveD)%82>41?parseInt(this.moveD/82)+1:parseInt(this.moveD/82)
-              :Math.abs(this.moveD)%82>41?parseInt(this.moveD/82)-1:parseInt(this.moveD/82);
+              let step = this.moveD>0?
+              Math.abs(this.moveD)%80>40?parseInt(this.moveD/80)+1:parseInt(this.moveD/80)
+              :Math.abs(this.moveD)%80>40/2?parseInt(this.moveD/80)-1:parseInt(this.moveD/80);
               this.moveD = 0;
               this.offset = step>0?this.offset+step>=2?2:this.offset+step
                 :this.offset+step<=2-len?3-len:this.offset+step;
           }else{
             this.moveD = 0;
-            let step = parseInt((this.end-this.startY)/25);
+            let step = parseInt((this.end-this.startY)/20);
             this.offset = step>0?this.offset+step>=2?2:this.offset+step
             :this.offset+step<=2-len?3-len:this.offset+step;
           }

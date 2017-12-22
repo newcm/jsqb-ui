@@ -67,7 +67,7 @@ export default {
     button{
         background:none;
         outline: none;
-        border:1px solid #41B883;
+        border:1px solid #41B883;/*no*/
         font-size:0.45rem;
         padding:12px 24px;
         margin:5px;

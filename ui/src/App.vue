@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div style='line-height:50px'>
+    <div class='t'>
       <a href="https://github.com/myprelude/jsqb-ui/tree/master/ui"><b>github</b> ★</a><br>
       <a href="http://scopeman.cn"><b>前端技术博客</b> ★</a>
     </div>
@@ -28,10 +28,13 @@ body{
   max-width:10rem;
   margin:0 auto;
   width:10rem;
+  .t{
+    line-height: 60px; 
+  }
 }
 a{
   color:#999;
   text-decoration: none;
-  font-size:30px;
+  font-size:32px;
 }
 </style>
