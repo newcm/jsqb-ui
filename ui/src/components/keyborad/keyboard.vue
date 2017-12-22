@@ -132,7 +132,7 @@ export default {
     .keyboard-header{
         line-height:80px;
         font-size:32px;
-        border-bottom:1px solid #666;
+        border-bottom:1px solid #666;/*no*/
     }
     .keyboard-input{
         margin:60px 0;
@@ -142,7 +142,7 @@ export default {
             display: inline-block;
             width:84px;
             height:84px;
-            border:1px solid #999;
+            border:1px solid #999;/*no*/
             vertical-align: middle;
             font-size:32px;
             line-height:80px;

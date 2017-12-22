@@ -105,7 +105,7 @@ export default {
     }
     .city-head-info{
         overflow: hidden;
-        border-bottom:1px solid #999;
+        border-bottom:1px solid #999;/*no*/
         div{
             float:left;
             width:60%;

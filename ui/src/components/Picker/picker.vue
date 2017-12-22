@@ -138,7 +138,7 @@ export default {
         height:164px;
         width:100%;
         pointer-events:none;
-        border-bottom:1px solid #999;
+        border-bottom:1px solid #999;/*no*/
     }
     .picker-mask-bottom{
         position: absolute;
@@ -147,7 +147,7 @@ export default {
         height:164px;
         width:100%;
         pointer-events:none;
-        border-top:1px solid #999;
+        border-top:1px solid #999;/*no*/
     }
 }
 </style>

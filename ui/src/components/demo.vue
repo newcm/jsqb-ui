@@ -72,12 +72,12 @@ export default {
             padding:0;
             margin-top:50px;
             li:nth-child(1){
-                border-top:1px solid #aaa;
+                border-top:1px solid #aaa;/*no*/
             }
             li{
                 list-style: none;
                 line-height:1.2rem;
-                border-bottom:1px solid #aaa;
+                border-bottom:1px solid #aaa;/*no*/
                 font-size:32px;
             }
         }
