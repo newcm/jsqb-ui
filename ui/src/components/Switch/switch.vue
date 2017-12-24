@@ -1,7 +1,7 @@
 <template>
   <div class="switch-box">
-      <div class='switch-btn' @click='chose()' :style='change'>
-          <div class='switch-o' :class="{active:flag}"></div>
+      <div class='switch-btn' @touchstart='chosestart' @touchend='choseend' :style='change'>
+          <div class='switch-o' :class="{active:flag,wid:small}"></div>
       </div>
   </div>
 </template>
@@ -12,6 +12,7 @@ export default {
   data () {
     return {
         flag:false,
+        small:false
     }
   },
   props:{
@@ -32,9 +33,13 @@ export default {
       }
   },
   methods:{
-      chose(){
+      choseend(){
          this.flag = !this.flag;
+         this.small = !this.small;
          this.$emit('chose',this.flag)
+      },
+      chosestart(){
+          this.small = !this.small;
       }
   }
 }
@@ -58,17 +63,23 @@ export default {
            display:inline-block;
            position: absolute;
            top:0;
-           left:0;
+        //    left:0;
            width:70px;
            height: 70px;
-           border-radius:50%;
+           border-radius:35px;
            background:#fff;
            -moz-box-shadow: 2px 2px 2px #888888; /* 老的 Firefox */
             box-shadow: 2px 2px 2px #888888;
             transition:all 0.4s;
             -webkit-transition:all 0.4s;
             &.active{
-                left:51%
+                // position: absolute;
+                right:0;
+                // top:0;
+            }
+            &.wid{
+                width:100px;
+                // left:50%;
             }
        }
    }

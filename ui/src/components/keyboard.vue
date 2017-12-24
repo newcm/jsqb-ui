@@ -3,6 +3,7 @@
       <h1>Keyboard 键盘</h1>
       <button @click='on(1)'>默认键盘</button>
       <button  @click='on(2)'>自定义键盘</button>
+      <button  @click='on(3)'>数字键盘</button>
       <keyboard  @getvalue='getvalue1'  :keyshow.sync='show1'   :success.sync='success' :fail.sync='fail'></keyboard>
       <keyboard  @getvalue='getvalue2'  :keyshow.sync='show2' >
           <ul>
@@ -13,11 +14,14 @@
               <li>失败</li>
           </ul>
       </keyboard>
+      <keyboardnum :keyshow.sync='show3' @setval='setval'></keyboardnum>
+      <h2>{{val}}</h2>
   </div>
 </template>
 
 <script>
 import keyboard from './keyborad/keyboard.vue'
+import keyboardnum from './keyborad/keyboardNum.vue'
 
 export default {
   name: 'demo2',
@@ -25,8 +29,10 @@ export default {
     return {
         show1:false,
         show2:false,
+        show3:false,
         success:false,
-        fail:false
+        fail:false,
+        val:null
     }
   },
   methods:{
@@ -36,6 +42,9 @@ export default {
           }
           if(i==2){
               this.show2 = true;
+          }
+          if(i==3){
+              this.show3 = true;
           }
       },
       getvalue1(val){
@@ -47,10 +56,14 @@ export default {
       },
       getvalue2(val){
 
+      },
+      setval(val){ console.log(val);
+          this.val = val.join("-");
       }
   },
   components:{
-    keyboard
+    keyboard,
+    keyboardnum
   }
 }
 </script>

@@ -81,13 +81,13 @@ export default {
             span{
                 font-size:32px;
                 line-height:70px;
-                border-top:1px solid #999;/*no*/
+                border-top:1px solid #efefef;/*no*/
             }
             .span1{
                 width:50%;
             }
             span:nth-child(1){
-                border-right:1px solid #999;/*no*/
+                border-right:1px solid #efefef;/*no*/
             }
             .span2{
                 width:100%;

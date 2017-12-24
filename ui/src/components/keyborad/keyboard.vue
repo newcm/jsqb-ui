@@ -146,6 +146,7 @@ export default {
             vertical-align: middle;
             font-size:32px;
             line-height:80px;
+            font-style:normal;
         }
     }
     .keyboard-key{
