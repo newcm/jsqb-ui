@@ -1,0 +1,77 @@
+<template>
+  <div class="switch-box">
+      <div class='switch-btn' @click='chose()' :style='change'>
+          <div class='switch-o' :class="{active:flag}"></div>
+      </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'switch-ui',
+  data () {
+    return {
+        flag:false,
+    }
+  },
+  props:{
+     chosecolor:{
+         type:String,
+         default:'#41B883'
+     },
+     color:{
+         type:String,
+         default:'#efefef'
+     }
+  },
+  computed:{
+      change(){
+          return{
+              background:`${this.flag?this.chosecolor:this.color}`
+          }
+      }
+  },
+  methods:{
+      chose(){
+         this.flag = !this.flag;
+         this.$emit('chose',this.flag)
+      }
+  }
+}
+</script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang='less' scoped>
+.switch-box {
+    div{
+        // box-sizing: border-box;
+    }
+   display:inline-block;
+   .switch-btn{
+       display:inline-block;
+       padding:1px;
+       width:140px;
+       height:70px;
+       border:1px solid #ccc;/*no*/
+       border-radius:36px;
+       position: relative;
+       .switch-o{
+           display:inline-block;
+           position: absolute;
+           top:0;
+           left:0;
+           width:70px;
+           height: 70px;
+           border-radius:50%;
+           background:#fff;
+           -moz-box-shadow: 2px 2px 2px #888888; /* 老的 Firefox */
+            box-shadow: 2px 2px 2px #888888;
+            transition:all 0.4s;
+            -webkit-transition:all 0.4s;
+            &.active{
+                left:51%
+            }
+       }
+   }
+}
+
+</style>

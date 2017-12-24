@@ -27,7 +27,8 @@ export default {
         offset:2,
         moveD:0,
         time:300,
-        width:100
+        width:100,
+        end:0
     }
   },
   props:{

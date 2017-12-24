@@ -6,6 +6,9 @@ import dialog from '@/components/dialog.vue'
 import keyboard from '@/components/keyboard.vue'
 import tip from '@/components/tip.vue'
 import picker from '@/components/picker.vue'
+import Switch from '@/components/switch.vue'
+import tag from '@/components/tag.vue'
+import swiper from '@/components/swiper.vue'
 
 Vue.use(Router)
 
@@ -40,6 +43,21 @@ export default new Router({
       path: '/picker',
       name: 'picker',
       component: picker
+    },
+    {
+      path: '/switch',
+      name: 'switch',
+      component: Switch
+    },
+    {
+      path: '/tag',
+      name: 'tag',
+      component: tag
+    },
+    {
+      path: '/swiper',
+      name: 'swiper',
+      component: swiper
     }
   ]
 })

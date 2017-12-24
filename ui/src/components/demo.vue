@@ -6,6 +6,12 @@
           <li @click='go(3)'>提示框</li>
           <li @click='go(4)'>联动选择器</li>
           <li @click='go(5)'>下拉刷新</li>
+          <li @click='go(6)'>上拉加载</li>
+          <li @click='go(7)'>轮播器</li>
+          <li @click='go(8)'>标签页</li>
+          <li @click='go(9)'>switch开关</li>
+          <li @click='go(10)'>步骤条</li>
+          <li @click='go(11)'>表单控件</li>
       </ul>
       <Record :demodata='demodata' session='demoData'></Record>
   </div>
@@ -52,10 +58,41 @@ export default {
               this.$router.push({name:'picker'})
           }
           if(i==5){
-              this.demodata.push(new Date()+'点击下路刷新')
+              this.demodata.push(new Date()+'点击下拉刷新')
             window.sessionStorage.setItem('demoData',this.demodata.join('|'))
               this.$router.push({name:'pullDown'})
           }
+          if(i==6){
+              this.demodata.push(new Date()+'点击上拉加载')
+            window.sessionStorage.setItem('demoData',this.demodata.join('|'))
+              this.$router.push({name:'pullDown'})
+          }
+          if(i==7){
+              this.demodata.push(new Date()+'轮播器')
+            window.sessionStorage.setItem('demoData',this.demodata.join('|'))
+              this.$router.push({name:'swiper'})
+          }
+          if(i==8){
+              this.demodata.push(new Date()+'标签页')
+            window.sessionStorage.setItem('demoData',this.demodata.join('|'))
+              this.$router.push({name:'tag'})
+          }
+          if(i==9){
+              this.demodata.push(new Date()+'switch开关')
+            window.sessionStorage.setItem('demoData',this.demodata.join('|'))
+              this.$router.push({name:'switch'})
+          }
+          if(i==10){
+              this.demodata.push(new Date()+'步骤条')
+            window.sessionStorage.setItem('demoData',this.demodata.join('|'))
+              this.$router.push({name:'pullDown'})
+          }
+          if(i==11){
+              this.demodata.push(new Date()+'表单控件')
+            window.sessionStorage.setItem('demoData',this.demodata.join('|'))
+              this.$router.push({name:'pullDown'})
+          }
+
       }
   },
   components:{
