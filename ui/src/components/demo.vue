@@ -65,7 +65,7 @@ export default {
           if(i==6){
               this.demodata.push(new Date()+'点击上拉加载')
             window.sessionStorage.setItem('demoData',this.demodata.join('|'))
-              this.$router.push({name:'pullDown'})
+              this.$router.push({name:'pulldown'})
           }
           if(i==7){
               this.demodata.push(new Date()+'轮播器')

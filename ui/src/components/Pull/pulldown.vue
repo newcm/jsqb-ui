@@ -5,7 +5,13 @@
   @touchend='onend'
   >
       <div  ref='scroll' class='scroll-box' :style='scrollStyle'>
+          <div class='top' v-show='reload'>
+              刷新页面
+          </div>
           <slot></slot>
+          <div class='bottom' v-show='loadmore'>
+              加载更多
+          </div>
       </div>
   </div>
 </template>
@@ -25,17 +31,29 @@ export default {
     }
   },
   props:{
-     
+     reload:{
+         type:Boolean,
+         default:false
+     },
+     loadmore:{
+         type:Boolean,
+         default:false
+     }
+  },
+  watch:{
+      loadmore(val){
+          let that = this;
+          setTimeout(function(){
+               let h = parseInt(window.getComputedStyle(that.$refs.scrollBox, null).height);
+                let content = parseInt(window.getComputedStyle(that.$refs.scroll, null).height)
+                that.site = h-content;
+            },0)  
+      }
   },
   mounted(){
-      let that = this;
-      
-        let h = parseInt(window.getComputedStyle(that.$refs.scrollBox, null).height);
-        let content = parseInt(window.getComputedStyle(that.$refs.scroll, null).height)
-         
-  },
-  create(){
      
+       
+               
   },
   computed:{
       scrollStyle(){
@@ -68,17 +86,36 @@ export default {
           this.endY = event.changedTouches[0].clientY;
           let h = parseInt(window.getComputedStyle(that.$refs.scrollBox, null).height);
           let content = parseInt(window.getComputedStyle(that.$refs.scroll, null).height);
+          
+          let sc = content-h;
           if(this.endT-this.startT<200){
-              let b = this.site;
-            //   this.site = (this.endY-this.startY)>0?(this.endY-this.startY)*3.5>;
-            //   this.easeOut(0,this.)
+              this.move = 0;
+            this.site = (this.endY-this.startY)>0?this.site+(this.endY-this.startY)*3.5>=0?0:this.site+(this.endY-this.startY)*3.5:
+            this.site+(this.endY-this.startY)*3.5<=h-content?h-content:this.site+(this.endY-this.startY)*3.5;
+            // 这边暂时不添加 加载更多判断
           }else{
               this.move = 0;
               this.site+= this.endY-this.startY;
               if(Math.abs(this.site)+h>=content){
+                  //   加载
+                  if(this.site<h-content-40){
+                      console.log('加载')
+                      this.$emit('loadmore') 
+                    //   this.site = h-content;
+                    //   setTimeout(function(){
+                    //     content = parseInt(window.getComputedStyle(that.$refs.scroll, null).height);console.log(content)
+                    //     this.site = h-content;
+                    // },0)  
+                  }
                   this.site = h-content;
+                
               }
               if(this.site>=0){
+                  //  刷新
+                  if(this.site>40){
+                      console.log('刷新')
+                      this.$emit('reload')
+                  }
                   this.site = 0;
               }
           }
@@ -104,6 +141,29 @@ export default {
    overflow: hidden;
    .scroll-box{
        padding:1px;
+       position: relative;
+       .top{
+           position: absolute;
+           top:0;
+           left: 0;
+           width:100%;
+           background:rgba(0,0,0,.5);
+           color:#fff;
+           text-align:center;
+           line-height: 80px;
+           font-size:32px;
+       }
+       .bottom{
+           position: absolute;
+           bottom:0;
+           left: 0;
+           width:100%;
+           background:rgba(0,0,0,.5);
+           color:#fff;
+           text-align:center;
+           line-height: 80px;
+           font-size:32px;
+       }
    }
 }
 

@@ -1,6 +1,10 @@
 <template>
   <div class="demo">
-    <h1>步骤条</h1><button @click='t()'>下一步</button>
+    <h1>步骤条</h1>
+    <div class='d'>
+        <button @click='t(1)'>下一步</button>
+        <button @click='t(2)'>重置</button>
+    </div>
     <Step :step='tip'></Step>
     
   </div>
@@ -17,12 +21,17 @@ export default {
     }
   },
   methods:{
-    t(){
-        if(this.tip>4){
-            Toast('您已经完成操作');
-            return;
+    t(i){
+        if(i==1){
+            if(this.tip>4){
+                Toast('您已经完成操作');
+                return;
+            }
+            this.tip++;
         }
-        this.tip++;
+        if(i==2){
+            this.tip = 1;
+        }
         
     }
   },
@@ -37,6 +46,13 @@ export default {
 .demo{
     padding:20px;
     text-align:left;
+    .d{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,100%);
+        z-index:1000
+    }
     h1{
         font-size:0.5rem;
         color:#35495E;

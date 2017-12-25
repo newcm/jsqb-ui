@@ -1,8 +1,7 @@
 <template>
   <div class="demo">
     <h1>下拉刷新</h1>
-    <button @click='t(1)'>提示信息</button>
-    <Pull>
+    <Pull @loadmore='loadmore' @reload='reload' :reload='add' :loadmore='more'>
         <h2 v-for='item in data'>{{item}}</h2>
     </Pull>
   </div>
@@ -15,11 +14,28 @@ export default {
   name: 'demo1',
   data () {
     return {
-       data:[12,34,3,43,4,3,43,4,3,4,3,4,3,4,3,4,3,4,34,22,34,3,4,3,4,44]
+       data:[12,34,3,43,4,3,43,4,3,4,3,34,3,4,3,4,44],
+       add:false,
+       more:false,
+       i:0
     }
   },
   methods:{
-    
+    loadmore(){
+      this.more = true;
+      setTimeout(()=>{
+        this.data.push('我是新加的'+this.i++);
+        this.more = false;
+      },1500)
+    },
+    reload(){
+      this.add = true;
+      setTimeout(()=>{
+        this.data = [12,34,3,43,4,3,43,4,3,4,3,34,3,4,3,4,44];
+        this.i = 0;
+        this.add = false;
+      },1500)
+    }
   },
   components:{
     Pull
