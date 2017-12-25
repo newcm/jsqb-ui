@@ -63,7 +63,7 @@ export default {
            display:inline-block;
            position: absolute;
            top:0;
-        //    left:0;
+           left:0;
            width:70px;
            height: 70px;
            border-radius:35px;
@@ -73,9 +73,9 @@ export default {
             transition:all 0.4s;
             -webkit-transition:all 0.4s;
             &.active{
-                // position: absolute;
-                right:0;
-                // top:0;
+                transform:translate(-100%,0);
+                -webkit-transform:translate(-100%,0);
+                left:100%;
             }
             &.wid{
                 width:100px;
