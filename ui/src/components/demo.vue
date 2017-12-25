@@ -60,7 +60,7 @@ export default {
           if(i==5){
               this.demodata.push(new Date()+'点击下拉刷新')
             window.sessionStorage.setItem('demoData',this.demodata.join('|'))
-              this.$router.push({name:'pullDown'})
+              this.$router.push({name:'pulldown'})
           }
           if(i==6){
               this.demodata.push(new Date()+'点击上拉加载')
@@ -85,12 +85,12 @@ export default {
           if(i==10){
               this.demodata.push(new Date()+'步骤条')
             window.sessionStorage.setItem('demoData',this.demodata.join('|'))
-              this.$router.push({name:'pullDown'})
+              this.$router.push({name:'step'})
           }
           if(i==11){
               this.demodata.push(new Date()+'表单控件')
             window.sessionStorage.setItem('demoData',this.demodata.join('|'))
-              this.$router.push({name:'pullDown'})
+              this.$router.push({name:'form'})
           }
 
       }

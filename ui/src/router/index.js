@@ -9,6 +9,9 @@ import picker from '@/components/picker.vue'
 import Switch from '@/components/switch.vue'
 import tag from '@/components/tag.vue'
 import swiper from '@/components/swiper.vue'
+import step from '@/components/step.vue'
+import form from '@/components/form.vue'
+import pulldown from '@/components/pull.vue'
 
 Vue.use(Router)
 
@@ -58,6 +61,21 @@ export default new Router({
       path: '/swiper',
       name: 'swiper',
       component: swiper
+    },
+    {
+      path: '/step',
+      name: 'step',
+      component: step
+    },
+    {
+      path: '/form',
+      name: 'form',
+      component: form
+    },
+    {
+      path: '/pulldown',
+      name: 'pulldown',
+      component: pulldown
     }
   ]
 })
