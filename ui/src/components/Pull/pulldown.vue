@@ -58,7 +58,7 @@ export default {
   computed:{
       scrollStyle(){
           return{
-              transition:`${this.time}ms`,
+              transition:`all ${this.time}ms ease-out`,
               transform:`translate3d(0,${this.site+this.move}px,0)`
           }
       }
@@ -81,7 +81,7 @@ export default {
           e.stopPropagation();
           e.preventDefault();
           let that = this;
-          this.time = 500;
+          this.time = 300;
           this.endT = new Date().getTime();
           this.endY = event.changedTouches[0].clientY;
           let h = parseInt(window.getComputedStyle(that.$refs.scrollBox, null).height);

@@ -70,8 +70,8 @@ export default {
            background:#fff;
            -moz-box-shadow: 2px 2px 2px #888888; /* 老的 Firefox */
             box-shadow: 2px 2px 2px #888888;
-            transition:transform 0.4s,-webkit-transform 0.4s,left 0.4s,width 0.3s;
-            -webkit-transition:transform 0.4s,-webkit-transform 0.4s,left 0.4s,width 0.3s;
+            transition:all 0.3s;
+            -webkit-transition:all 0.3s;
             &.active{
                 transform:translate(-100%,0);
                 -webkit-transform:translate(-100%,0);
