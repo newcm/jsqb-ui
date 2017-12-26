@@ -1,5 +1,5 @@
 <template>
-    <div class='citypicker-mask' v-if='tipshow'>
+    <div class='citypicker-mask' v-show='tipshow'>
         <div class='citypicker-box'>
             <div class='citypicker-head'>
                 <slot>
@@ -11,9 +11,9 @@
                 </slot>
             </div>
             <div class="picker-view" ref='picker'>
-                <selectui :value1='val1' v-if='val1.length>0' :step='step' @changeval='change1' ex='1'></selectui>
-                <selectui :value1='val2' v-if='val2.length>0' :step='step'  @changeval='change2' ex='2'></selectui>
-                <selectui :value1='val3' v-if='val3.length>0' :step='step'  @changeval='change3' ex='3'></selectui>
+                <selectui :value1='val1' v-if='val1.length>0' :step='step' @changeval='change1' ex='4'></selectui>
+                <selectui :value1='val2' v-if='val2.length>0' :step='step'  @changeval='change2' ex='5' :about='way1'></selectui>
+                <selectui :value1='val3' v-if='val3.length>0' :step='step'  @changeval='change3' ex='6'></selectui>
             </div>
         </div>
     </div>  
@@ -68,25 +68,32 @@ export default {
      }
 
   },
+  mounted(){
+      
+  },
   methods:{
       cancel(){
           this.$emit('update:tipshow',false);
           this.$emit('cancel');
       },
       comfrim(){
+          this.$refs.picker.querySelectorAll('.chose').forEach(element => {
+              this.values.push(element.innerHTML)
+          });
           this.$emit('update:tipshow',false);
           this.$emit('comfrim',this.values)
           this.values=[];
       },
       change1(i){
+        //   console.log(i)
           this.way1=i;
-        this.values[0] = this.val1[i];
+        // console.log(this.way1)
       },
       change2(i){
-          this.values[1] = this.val2[i];
+
       },
       change3(i){
-          this.values[2] = this.val3[i];
+
       }
   },
   components:{

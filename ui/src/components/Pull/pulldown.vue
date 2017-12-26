@@ -4,15 +4,15 @@
   @touchmove='onmove'
   @touchend='onend'
   >
-      <div  ref='scroll' class='scroll-box' :style='scrollStyle'>
-          <div class='top' v-show='reload'>
+    <div class='top' v-show='reload'>
               刷新页面
-          </div>
-          <slot></slot>
-          <div class='bottom' v-show='loadmore'>
+    </div>
+    <div  ref='scroll' class='scroll-box' :style='scrollStyle'>
+          <slot></slot> 
+    </div>
+    <div class='bottom' v-show='loadmore'>
               加载更多
-          </div>
-      </div>
+    </div>
   </div>
 </template>
 
@@ -75,7 +75,7 @@ export default {
           e.stopPropagation();
           e.preventDefault();
           let moveSite = event.touches[0].clientY-this.startY;
-          this.move = moveSite;
+          this.move = moveSite;   
       },
       onend(e){
           e.stopPropagation();
@@ -90,29 +90,24 @@ export default {
           let sc = content-h;
           if(this.endT-this.startT<200){
               this.move = 0;
-            this.site = (this.endY-this.startY)>0?this.site+(this.endY-this.startY)*3.5>=0?0:this.site+(this.endY-this.startY)*3.5:
-            this.site+(this.endY-this.startY)*3.5<=h-content?h-content:this.site+(this.endY-this.startY)*3.5;
+            this.site = (this.endY-this.startY)>0?this.site+(this.endY-this.startY)*5.2>=0?0:this.site+(this.endY-this.startY)*5.2:
+            this.site+(this.endY-this.startY)*5.2<=h-content?h-content:this.site+(this.endY-this.startY)*5.2;
             // 这边暂时不添加 加载更多判断
           }else{
               this.move = 0;
               this.site+= this.endY-this.startY;
               if(Math.abs(this.site)+h>=content){
                   //   加载
-                  if(this.site<h-content-40){
+                  if(this.site<h-content-30){
                       console.log('加载')
                       this.$emit('loadmore') 
-                    //   this.site = h-content;
-                    //   setTimeout(function(){
-                    //     content = parseInt(window.getComputedStyle(that.$refs.scroll, null).height);console.log(content)
-                    //     this.site = h-content;
-                    // },0)  
                   }
                   this.site = h-content;
                 
               }
               if(this.site>=0){
                   //  刷新
-                  if(this.site>40){
+                  if(this.site>30){
                       console.log('刷新')
                       this.$emit('reload')
                   }
@@ -139,10 +134,8 @@ export default {
    height:500px;
    border:1px solid #efefef;
    overflow: hidden;
-   .scroll-box{
-       padding:1px;
-       position: relative;
-       .top{
+   position: relative;
+    .top{
            position: absolute;
            top:0;
            left: 0;
@@ -164,6 +157,10 @@ export default {
            line-height: 80px;
            font-size:32px;
        }
+   .scroll-box{
+       padding:1px;
+    //    position: relative;
+      
    }
 }
 
