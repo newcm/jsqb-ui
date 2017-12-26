@@ -90,8 +90,8 @@ export default {
           let len = this.about!=-1?this.value1[this.about].length:this.value1.length;
           this.endT = new Date().getTime();
           this.end = event.changedTouches[0].clientY;
-          this.time = 300;
-          if(this.endT-this.startT>180){
+          this.time = 400;
+          if(this.endT-this.startT>150){
               let step = this.moveD>0?
               Math.abs(this.moveD)%this.site>this.site/4?parseInt(this.moveD/this.site)+1:parseInt(this.moveD/this.site)
               :Math.abs(this.moveD)%this.site>this.site/4?parseInt(this.moveD/this.site)-1:parseInt(this.moveD/this.site);
@@ -99,8 +99,8 @@ export default {
               this.offset = step>0?this.offset+step>=2?2:this.offset+step
                 :this.offset+step<=2-len?3-len:this.offset+step;
           }else{
-            this.moveD = 0;console.log(this.end-this.startY)
-            let step = parseInt((this.end-this.startY)/(200/Math.abs(this.end-this.startY)));
+            this.moveD = 0;
+            let step = parseInt((this.end-this.startY)/10);
             this.offset = step>0?this.offset+step>=2?2:this.offset+step
             :this.offset+step<=2-len?3-len:this.offset+step;
           }
@@ -148,7 +148,7 @@ export default {
         height:164px;
         width:100%;
         pointer-events:none;
-        border-bottom:1px solid #999;/*no*/
+        border-bottom:1px solid #efefef;/*no*/
     }
     .picker-mask-bottom{
         position: absolute;
@@ -157,7 +157,7 @@ export default {
         height:164px;
         width:100%;
         pointer-events:none;
-        border-top:1px solid #999;/*no*/
+        border-top:1px solid #efefef;/*no*/
     }
 }
 </style>

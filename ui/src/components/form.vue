@@ -3,12 +3,13 @@
     <h1>表单控件</h1>
     <button @click='t(1)'>Form</button>
     <button @click='t(2)'>类型</button>
+    <F></F>
   </div>
 </template>
 
 <script>
 import Toast from './Tips/toast.js'
-import Tip from './Tips/tips.vue'
+import F from './Form/form.vue'
 
 export default {
   name: 'demo1',
@@ -31,7 +32,7 @@ export default {
     }
   },
   components:{
-    Tip
+    F
   }
 }
 </script>
