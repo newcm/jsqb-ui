@@ -148,6 +148,9 @@ export default {
             line-height:80px;
             font-style:normal;
         }
+        i+i{
+            border-left:none;
+        }
     }
     .keyboard-key{
         position: absolute;
