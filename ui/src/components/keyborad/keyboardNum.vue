@@ -1,7 +1,7 @@
 <template>
   <div class="keyboard-box" v-if='keyshow'>
       <div class='keyborad-panel'>
-          <div class='keyboard-key'>
+          <div class='keyboard-key' :class='{animate:keyshow}'>
               <div>
                 <span @click='close'>取消</span><span @click='close'>确定</span>
             </div>
@@ -99,6 +99,10 @@ export default {
         }
     }
     .keyboard-key{
+        &.animate{
+            animation:mymove 0.5s;
+            -webkit-animation:mymove 0.5s;  
+        }
         position: absolute;
         bottom:0;
         width:100%;
@@ -115,4 +119,15 @@ export default {
     }
 }
 
+@keyframes mymove
+{
+from {transform: translate(0%,100%);}
+to {transform: translate(0%,0%);}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+from {transform: translate(0%,100%);}
+to {transform: translate(0%,0%);}
+}
 </style>

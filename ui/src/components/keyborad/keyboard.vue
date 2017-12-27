@@ -1,6 +1,6 @@
 <template>
   <div class="keyboard-box" v-if='keyshow'>
-      <div class='keyborad-panel'>
+      <div class='keyborad-panel' :class="{animate:keyshow}">
           <div class='keyboard-header' @click='close()' >请输入交易密码(点击关闭) <img src="" alt=""></div>
           <div v-show='!show'>
               <slot v-if='load'>
@@ -129,6 +129,10 @@ export default {
     width:100%;
     height: 700px;
     background:#fff;
+    &.animate{
+        animation:mymove 0.5s;
+        -webkit-animation:mymove 0.5s;  
+    }
     .keyboard-header{
         line-height:80px;
         font-size:32px;
@@ -236,5 +240,16 @@ export default {
     bottom: 14px;
     left: 14px;
     -webkit-animation-delay:1.04s;
+}
+@keyframes mymove
+{
+from {transform: translate(0%,100%);}
+to {transform: translate(0%,0%);}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+from {transform: translate(0%,100%);}
+to {transform: translate(0%,0%);}
 }
 </style>

@@ -8,17 +8,17 @@
         <button @click='d(4)'>alert类型</button>
         <button @click='d(5)'>comfrim类型</button>
     </div>
-    <Dialogui   v-show='alert1' @dialog='dialogshow1' cancelBtn='确定'></Dialogui>
-    <Dialogui   v-show='alert2' @dialog='dialogshow2' cancelBtn='确定' title='我是带标题'></Dialogui>
-    <Dialogui title='自定义dialog' type='comfrim' v-show='alert3' @dialog='dialogshow3'>
+    <Dialogui   :isshow='alert1' @dialog='dialogshow1' cancelBtn='确定'></Dialogui>
+    <Dialogui   :isshow='alert2' @dialog='dialogshow2' cancelBtn='确定' title='我是带标题'></Dialogui>
+    <Dialogui title='自定义dialog' type='comfrim' :isshow='alert3' @dialog='dialogshow3'>
       <h1>自定义内容内容</h1> 
       <ul>
           <li>123123</li>
           <li>1231</li>
       </ul>
     </Dialogui>
-    <Dialogui   v-show='alert4' @dialog='dialogshow4' cancelBtn='alert按钮'>我就是普通的alert</Dialogui>
-    <Dialogui   v-show='alert5' type='comfrim' @dialog='dialogshow5' cancelBtn='取消按钮' comfrimBtn='确定按钮' title='我是comfrim类型'></Dialogui>
+    <Dialogui   :isshow='alert4' @dialog='dialogshow4' cancelBtn='alert按钮'>我就是普通的alert</Dialogui>
+    <Dialogui   :isshow='alert5' type='comfrim' @dialog='dialogshow5' cancelBtn='取消按钮' comfrimBtn='确定按钮' title='我是comfrim类型'></Dialogui>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-    <div class='dialog-box'>
-        <div class='dialog-info'>
+    <div class='dialog-box' v-if='isshow'>
+        <div class='dialog-info' :class='{animate:isshow}'>
             <div class='dialog-header' v-if='title'>{{title}}</div>
             <div class='dialog-content'>
                 <slot>弹出框内容</slot>
@@ -22,6 +22,10 @@ export default {
     }
   },
   props:{
+     isshow:{
+         type:Boolean,
+         default:false
+     },
      title:{
          type:String
      },
@@ -40,6 +44,7 @@ export default {
   },
   methods:{
     dispatch($event,eventStr){
+        this.$emit('update:isshow',false)
         this.$emit('dialog',eventStr)
     }
     
@@ -66,6 +71,10 @@ export default {
         -webkit-transform: translate(-50%,-50%);
         background:#fff;
         border-radius:10px;
+        &.animate{
+            animation:mymove 0.5s;
+            -webkit-animation:mymove 0.5s;  
+        }
         .dialog-header{
             text-align:center;
             font-size:36px;
@@ -98,4 +107,15 @@ export default {
             
         }
     }
+@keyframes mymove
+{
+from {transform: translate(-50%,-50%) scale(0.5);}
+to {transform: translate(-50%,-50%) scale(1);}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+from {transform: translate(-50%,-50%) scale(0.5);}
+to {transform: translate(-50%,-50%) scale(1);}
+}
 </style>

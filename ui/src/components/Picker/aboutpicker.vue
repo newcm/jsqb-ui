@@ -1,6 +1,6 @@
 <template>
     <div class='citypicker-mask' v-show='tipshow'>
-        <div class='citypicker-box'>
+        <div class='citypicker-box' :class='{animate:tipshow}'>
             <div class='citypicker-head'>
                 <slot>
                     <div class='city-head-info'>
@@ -120,6 +120,10 @@ export default {
         width:100%;
         bottom:0;
         left: 0;background:#fff;
+        &.animate{
+            animation:mymove 0.5s;
+            -webkit-animation:mymove 0.5s;  
+        }
     }
     .city-head-info{
         overflow: hidden;
@@ -141,4 +145,15 @@ export default {
             flex:1
         }
     }
+    @keyframes mymove
+{
+from {transform: translate(0%,100%);}
+to {transform: translate(0%,0%);}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+from {transform: translate(0%,100%);}
+to {transform: translate(0%,0%);}
+}
 </style>
