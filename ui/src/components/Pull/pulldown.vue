@@ -8,7 +8,20 @@
               刷新页面
     </div>
     <div  ref='scroll' class='scroll-box' :style='scrollStyle'>
-          <slot></slot> 
+        <div style='text-align:center'>
+            <arrow style='width:20px;height:30px;margin:0 auto;vertical-align:center'></arrow>
+            <div>玩命加载...</div>
+        </div>
+        <div style='text-align:center'>
+            <load style='width:30px;height:30px;margin:0 auto;fill:#aaa'></load>
+        </div>
+        
+
+        <slot></slot> 
+        <div style='text-align:center'>
+            <load style='width:30px;height:30px;margin:0 auto;fill:#aaa'></load>
+        </div>
+        
     </div>
     <div class='bottom' v-show='loadmore'>
               加载更多
@@ -17,6 +30,8 @@
 </template>
 
 <script>
+import arrow from "./arrow.vue"
+import load from "./load.vue"
 export default {
   name: 'hell',
   data () {
@@ -27,7 +42,8 @@ export default {
         startT:0,
         endY:0,
         endT:0,
-        site:0
+        site:0,
+        flag:true
     }
   },
   props:{
@@ -63,6 +79,10 @@ export default {
           }
       }
   },
+  components:{
+      arrow,
+      load
+  },
   methods:{
       onstart(e){
           e.stopPropagation();
@@ -75,13 +95,14 @@ export default {
           e.stopPropagation();
           e.preventDefault();
           let moveSite = event.touches[0].clientY-this.startY;
-          this.move = moveSite;   
+          this.move = moveSite; 
       },
       onend(e){
           e.stopPropagation();
           e.preventDefault();
           let that = this;
           this.time = 300;
+          this.flag = true;
           this.endT = new Date().getTime();
           this.endY = event.changedTouches[0].clientY;
           let h = parseInt(window.getComputedStyle(that.$refs.scrollBox, null).height);

@@ -1,7 +1,7 @@
 <template>
   <div class="tag-box">
       <div class='tag-on' :style='width'>
-            <div class='tag-content' :style='move'>
+            <div class='tag-content' >
                 <div v-for='(item,index) in data' :class='{active:index==i}' @click='onTag(index)'>{{item}}</div>
             </div>
             <div class='tag-line' :style='moveLine'></div>
