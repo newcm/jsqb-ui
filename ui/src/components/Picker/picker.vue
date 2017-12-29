@@ -100,7 +100,7 @@ export default {
                 :this.offset+step<=2-len?3-len:this.offset+step;
           }else{
             this.moveD = 0;
-            let step = parseInt((this.end-this.startY)/10);
+            let step = parseInt((this.end-this.startY)/Math.pow(Math.abs(this.end-this.startY),0.5));
             this.offset = step>0?this.offset+step>=2?2:this.offset+step
             :this.offset+step<=2-len?3-len:this.offset+step;
           }

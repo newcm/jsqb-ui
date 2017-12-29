@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
     <h1>下拉刷新</h1>
-    <Pull @loadmore='loadmore' @reload='reload' :reload='add' :loadmore='more'>
-        <h2 v-for='item in data'>{{item}}</h2>
+    <Pull @loadmore='loadmore' @reload='reload' >
+        <li v-for='item in data'>{{item}}</li>
     </Pull>
   </div>
 </template>
@@ -14,26 +14,32 @@ export default {
   name: 'demo1',
   data () {
     return {
-       data:[12,34,3,43,4,3,43,4,3,4,3,34,3,4,3,4,44],
-       add:false,
-       more:false,
+       data:['第一列','第二列','第三列','第四列','第五列','第六列','第七列','第八列','第九列','第十一列','第十二列','第十三列','第十四列','第十五列','第十六列','第十七列'],
+      //  state:1,
        i:0
     }
   },
   methods:{
-    loadmore(){
+    loadmore(done){
       this.more = true;
+      if(this.i>=2){
+        done(true);
+        return;
+      }
       setTimeout(()=>{
         this.data.push('我是新加的'+this.i++);
-        this.more = false;
+        // this.state = 1;
+        done()
+        
       },1500)
     },
-    reload(){
+    reload(done){
       this.add = true;
       setTimeout(()=>{
-        this.data = [12,34,3,43,4,3,43,4,3,4,3,34,3,4,3,4,44];
+        this.data = ['第一列','第二列','第三列','第四列','第五列','第六列','第七列','第八列','第九列','第十一列','第十二列','第十三列','第十四列','第十五列','第十六列','第十七列'];
         this.i = 0;
-        this.add = false;
+        // this.state = 1;
+        done()
       },1500)
     }
   },
@@ -64,6 +70,13 @@ export default {
         margin:5px;
         border-radius:8px;
         color:#666;
+    }
+    li{
+      text-align:center;
+      list-style:none;
+      line-height: 100px;
+      border-bottom:1px solid #efefef;
+      font-size:32px;
     }
 }
 
